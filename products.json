@@ -1,0 +1,97 @@
+[
+  {
+    "id": "java-burn",
+    "name": "Java Burn",
+    "category": "Weight Management",
+    "shortDescription": "A guide to reviewing a coffee-associated supplement marketed for weight management. Check the current label and seller terms.",
+    "imageUrl": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80",
+    "imageAlt": "A balanced meal with fresh ingredients",
+    "reviewTitle": "Java Burn: What to Check Before Buying",
+    "reviewIntro": "Java Burn is marketed as a coffee-associated supplement in the weight-management category. Product formulas, seller terms, and promotional claims can change, so verify current information from the official seller and product label before making a decision.",
+    "checklist": [
+      "Read the current Supplement Facts panel and full ingredient list.",
+      "Check the total cost, shipping, recurring-order terms, and refund policy.",
+      "Look for reliable evidence for specific claims; marketing language alone is not proof.",
+      "Ask a qualified healthcare professional about potential interactions or suitability for you."
+    ],
+    "warning": "This guide does not promise weight loss or a specific health outcome. Results and suitability vary by individual.",
+    "affiliateUrl": "",
+    "ctaText": "Visit Official Website"
+  },
+  {
+    "id": "leanbiome",
+    "name": "LeanBiome",
+    "category": "Gut Health",
+    "shortDescription": "A guide to a supplement marketed around gut health and weight support, with details to verify before purchase.",
+    "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
+    "imageAlt": "Fresh greens and vegetables in a bowl",
+    "reviewTitle": "LeanBiome: Product Details to Review",
+    "reviewIntro": "LeanBiome is marketed in the gut-health and weight-support space. Before purchasing, confirm the current formula and evaluate the product information rather than relying only on a headline or testimonial.",
+    "checklist": [
+      "Confirm the ingredients, quantities, serving instructions, and allergen information.",
+      "Check whether claims are supported by evidence relevant to the finished product.",
+      "Review refund conditions, shipping fees, and whether orders renew automatically.",
+      "Discuss supplements with a qualified healthcare professional if you have a medical concern or take medication."
+    ],
+    "warning": "This content is educational and is not a diagnosis or treatment recommendation.",
+    "affiliateUrl": "",
+    "ctaText": "Visit Official Website"
+  },
+  {
+    "id": "joint-genesis",
+    "name": "Joint Genesis",
+    "category": "Joint Wellness",
+    "shortDescription": "A guide to evaluating a product marketed for joint comfort and mobility. Review ingredients and safety information.",
+    "imageUrl": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80",
+    "imageAlt": "Person exercising in a fitness setting",
+    "reviewTitle": "Joint Genesis: Details Worth Checking",
+    "reviewIntro": "Joint Genesis is marketed toward joint wellness, mobility, or comfort. The exact formulation and claims should be checked against the current product label and official seller information.",
+    "checklist": [
+      "Review all listed ingredients, amounts, directions, and warnings.",
+      "Check whether evidence supports the specific claim being made—not just an ingredient in isolation.",
+      "Confirm price, delivery arrangements, return policy, and any subscription terms.",
+      "Seek professional advice for persistent pain, swelling, injury, or other symptoms."
+    ],
+    "warning": "A supplement should not be presented as a replacement for medical evaluation or prescribed care.",
+    "affiliateUrl": "",
+    "ctaText": "Visit Official Website"
+  },
+  {
+    "id": "cortexi",
+    "name": "Cortexi",
+    "category": "Hearing Wellness",
+    "shortDescription": "A guide to checking claims, ingredients, purchase terms, and safety information for a hearing-wellness product.",
+    "imageUrl": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80",
+    "imageAlt": "A calm wellness and mindfulness setting",
+    "reviewTitle": "Cortexi: Claims, Ingredients, and Purchase Terms",
+    "reviewIntro": "Cortexi is marketed in the hearing-wellness category. Be especially careful with claims about hearing changes, tinnitus, or medical conditions: marketing statements do not establish that a supplement can diagnose, treat, cure, or prevent a condition.",
+    "checklist": [
+      "Read the complete formula, serving directions, warnings, and manufacturer information.",
+      "Look for credible clinical evidence for the exact product and claim.",
+      "Understand the total order cost and refund/recurring-payment conditions before checkout.",
+      "New or changing hearing symptoms should be assessed by an appropriate healthcare professional."
+    ],
+    "warning": "Do not delay professional evaluation of hearing symptoms because of supplement advertising.",
+    "affiliateUrl": "",
+    "ctaText": "Visit Official Website"
+  },
+  {
+    "id": "the-brain-songx",
+    "name": "The Brain Songx",
+    "category": "Hearing Wellness",
+    "shortDescription": "Where neuroscience meets sound.\nThe Brain Song is a simple, 12-minute digital audio that helps naturally activate healthy brainwave patterns linked with BDNF – Brain-Derived Neurotrophic Factor, the key molecule that supports learning, focus, and overall brain wellness.",
+    "imageUrl": "https://gobrainsong.com/std/images/prd-img-mini.png",
+    "imageAlt": "The Brain Songx product image",
+    "reviewTitle": "The Brain Songx: What to Check Before Buying",
+    "reviewIntro": "Where neuroscience meets sound.\nThe Brain Song is a simple, 12-minute digital audio that helps naturally activate healthy brainwave patterns linked with BDNF – Brain-Derived Neurotrophic Factor, the key molecule that supports learning, focus, and overall brain wellness.",
+    "checklist": [
+      "Review the current product label, ingredients, and directions.",
+      "Check price, shipping, refund policy, and recurring-order terms.",
+      "Look for reliable evidence for specific product claims.",
+      "Consult a qualified healthcare professional about personal suitability."
+    ],
+    "warning": "Activate Your Brain Song Now — And Give Your Mind The Care It Deserves.",
+    "affiliateUrl": "https://7cb6c82nwj-zfx8817ymx8pa46.hop.clickbank.net",
+    "ctaText": "Visit Offihttps://gobrainsong.com/?hopId=764cf82cial Website"
+  }
+]
