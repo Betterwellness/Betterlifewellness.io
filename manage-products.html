@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10241d"><title>Manage Products | BetterLife Wellness</title>
+<style>
+:root{--bg:#f5f8f4;--card:#fff;--text:#1a2921;--muted:#5f6d64;--line:#dce5dd;--brand:#176b4c;--brand-dark:#0d4b36;--accent:#d5f36a;--danger:#a33c32;--radius:18px;--shadow:0 12px 38px rgba(23,55,39,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:var(--brand)}button,input,textarea{font:inherit}.top{background:#10241d;color:white;padding:20px 0}.wrap{width:min(1100px,calc(100% - 32px));margin:auto}.toprow{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.top h1{margin:0;font-size:clamp(1.5rem,4vw,2.2rem);letter-spacing:-.04em}.top p{color:#dae7df;margin:5px 0 0}.top a{color:#fff}.layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:22px;padding:24px 0 50px}.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:23px;min-width:0}.panel h2{margin:0 0 6px;letter-spacing:-.03em}.intro{color:var(--muted);margin:0 0 20px;font-size:.93rem}.field{display:grid;gap:6px;margin-bottom:15px}.field label{font-weight:750;font-size:.9rem}.field input,.field textarea{width:100%;border:1px solid #cbd8ce;border-radius:11px;padding:11px 12px;background:#fff;color:#18251d;outline-offset:2px}.field textarea{min-height:95px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{border:0;border-radius:11px;padding:11px 15px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}.primary{background:var(--brand);color:white}.secondary{background:#eaf1eb;color:#183c2a;border:1px solid var(--line)}.danger{background:#fff0ee;color:var(--danger);border:1px solid #edc1bc}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:5px}.status{min-height:1.5rem;color:var(--brand-dark);font-size:.9rem;font-weight:650;margin:12px 0 0}.catalog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.count{border-radius:999px;background:#eaf4ec;color:var(--brand-dark);padding:5px 10px;font-weight:800;font-size:.82rem;white-space:nowrap}.product-list{display:grid;gap:10px;margin-top:16px}.item{border:1px solid var(--line);border-radius:14px;padding:13px;display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center}.item img{width:64px;height:64px;object-fit:cover;border-radius:10px;background:#edf2ee}.item h3{margin:0;font-size:1rem;line-height:1.25}.item p{margin:3px 0;color:var(--muted);font-size:.84rem}.item-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.item-actions .btn{font-size:.82rem;padding:6px 10px}.empty{padding:20px;border:1px dashed var(--line);border-radius:12px;text-align:center;color:var(--muted)}.guide{margin-top:20px;padding:15px;background:#f3f7ef;border-radius:12px;font-size:.9rem}.guide ol{padding-left:20px;margin-bottom:0}.danger-note{color:#81372e;background:#fff0ee;border:1px solid #edc1bc;padding:13px 14px;border-radius:12px;font-size:.88rem;margin-top:17px}.file-row{margin-top:12px;padding-top:15px;border-top:1px solid var(--line)}.file-row input{max-width:100%}.hidden{display:none!important}@media(max-width:820px){.layout{grid-template-columns:1fr}.row{grid-template-columns:1fr}.panel{padding:18px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap toprow"><div><h1>BetterLife Wellness — Product Manager</h1><p>Add, edit, or remove product guides without editing the website HTML.</p></div><a href="index.html">← View website</a></div></header>
+<main class="wrap layout">
+<section class="panel">
+<h2 id="formTitle">Add a new product</h2><p class="intro">Fill product details below. Review heading, introduction, checklist, and image alt text are generated automatically. The “Read Full Review” link will appear directly below the product image on the homepage.</p>
+<form id="productForm">
+<div class="row"><div class="field"><label for="name">Product name *</label><input id="name" required maxlength="90" placeholder="Example: New Wellness Product"></div><div class="field"><label for="category">Category *</label><input id="category" required maxlength="70" placeholder="Weight Management"></div></div>
+<div class="field"><label for="shortDescription">Short description *</label><textarea id="shortDescription" required maxlength="400" placeholder="Short text displayed on product card"></textarea></div>
+<div class="field"><label for="imageUrl">Product image URL *</label><input id="imageUrl" type="url" required placeholder="https://example.com/product-image.jpg"></div>
+
+
+
+
+<div class="field"><label for="warning">Health/safety note</label><textarea id="warning" maxlength="500" placeholder="Educational content only; not medical advice."></textarea></div>
+<div class="field"><label for="affiliateUrl">Your affiliate link (optional)</label><input id="affiliateUrl" type="url" placeholder="https://your-affiliate-hoplink.example"></div>
+<div class="field"><label for="ctaText">Affiliate button text</label><input id="ctaText" maxlength="60" value="Visit Official Website"></div>
+<div class="actions"><button class="btn primary" type="submit" id="saveBtn">＋ Add Product</button><button class="btn secondary" type="button" id="resetBtn">Clear form</button><button class="btn secondary hidden" type="button" id="cancelEditBtn">Cancel edit</button></div>
+<p class="status" id="status" aria-live="polite"></p>
+</form>
+<div class="file-row"><strong>Import an existing catalog</strong><p class="intro">Choose a products.json file to load and edit its products here.</p><input id="importFile" type="file" accept="application/json,.json"></div>
+</section>
+<aside class="panel">
+<div class="catalog-head"><div><h2>Your product catalog</h2><p class="intro">Products are saved directly to products.json when the local save server is running.</p></div><span class="count" id="count">0 products</span></div>
+<div id="productList" class="product-list"></div>
+<div class="actions" style="margin-top:16px"><button class="btn primary" id="downloadBtn" type="button">↓ Download products.json</button><button class="btn secondary" id="importCurrentBtn" type="button">Import current site catalog</button></div>
+<div class="guide"><strong>Automatic local saving</strong><ol><li>Start <code>server.py</code> using <code>python server.py</code> in this folder.</li><li>Add, edit, or delete a product here. It will save to <code>products.json</code> automatically.</li><li>Refresh the homepage to see the changes.</li><li>Use <strong>Download products.json</strong> when you want an extra backup.</li></ol></div>
+<div class="danger-note"><strong>Local-only:</strong> Automatic saving works only while you start <code>server.py</code> on this computer. The server listens on this computer only; it does not publish changes to an online website. Keep a backup of <code>products.json</code>.</div>
+</aside>
+</main>
+<script>
+const DEFAULT_PRODUCTS = [
+  {
+    "id": "java-burn",
+    "name": "Java Burn",
+    "category": "Weight Management",
+    "shortDescription": "A guide to reviewing a coffee-associated supplement marketed for weight management. Check the current label and seller terms.",
+    "imageUrl": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80",
+    "imageAlt": "A balanced meal with fresh ingredients",
+    "reviewTitle": "Java Burn: What to Check Before Buying",
+    "reviewIntro": "Java Burn is marketed as a coffee-associated supplement in the weight-management category. Product formulas, seller terms, and promotional claims can change, so verify current information from the official seller and product label before making a decision.",
+    "checklist": [
+      "Read the current Supplement Facts panel and full ingredient list.",
+      "Check the total cost, shipping, recurring-order terms, and refund policy.",
+      "Look for reliable evidence for specific claims; marketing language alone is not proof.",
+      "Ask a qualified healthcare professional about potential interactions or suitability for you."
+    ],
+    "warning": "This guide does not promise weight loss or a specific health outcome. Results and suitability vary by individual.",
+    "affiliateUrl": "",
+    "ctaText": "Visit Official Website"
+  },
+  {
+    "id": "leanbiome",
+    "name": "LeanBiome",
+    "category": "Gut Health",
+    "shortDescription": "A guide to a supplement marketed around gut health and weight support, with details to verify before purchase.",
+    "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
+    "imageAlt": "Fresh greens and vegetables in a bowl",
+    "reviewTitle": "LeanBiome: Product Details to Review",
+    "reviewIntro": "LeanBiome is marketed in the gut-health and weight-support space. Before purchasing, confirm the current formula and evaluate the product information rather than relying only on a headline or testimonial.",
+    "checklist": [
+      "Confirm the ingredients, quantities, serving instructions, and allergen information.",
+      "Check whether claims are supported by evidence relevant to the finished product.",
+      "Review refund conditions, shipping fees, and whether orders renew automatically.",
+      "Discuss supplements with a qualified healthcare professional if you have a medical concern or take medication."
+    ],
+    "warning": "This content is educational and is not a diagnosis or treatment recommendation.",
+    "affiliateUrl": "",
+    "ctaText": "Visit Official Website"
+  },
+  {
+    "id": "joint-genesis",
+    "name": "Joint Genesis",
+    "category": "Joint Wellness",
+    "shortDescription": "A guide to evaluating a product marketed for joint comfort and mobility. Review ingredients and safety information.",
+    "imageUrl": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80",
+    "imageAlt": "Person exercising in a fitness setting",
+    "reviewTitle": "Joint Genesis: Details Worth Checking",
+    "reviewIntro": "Joint Genesis is marketed toward joint wellness, mobility, or comfort. The exact formulation and claims should be checked against the current product label and official seller information.",
+    "checklist": [
+      "Review all listed ingredients, amounts, directions, and warnings.",
+      "Check whether evidence supports the specific claim being made—not just an ingredient in isolation.",
+      "Confirm price, delivery arrangements, return policy, and any subscription terms.",
+      "Seek professional advice for persistent pain, swelling, injury, or other symptoms."
+    ],
+    "warning": "A supplement should not be presented as a replacement for medical evaluation or prescribed care.",
+    "affiliateUrl": "",
+    "ctaText": "Visit Official Website"
+  },
+  {
+    "id": "cortexi",
+    "name": "Cortexi",
+    "category": "Hearing Wellness",
+    "shortDescription": "A guide to checking claims, ingredients, purchase terms, and safety information for a hearing-wellness product.",
+    "imageUrl": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80",
+    "imageAlt": "A calm wellness and mindfulness setting",
+    "reviewTitle": "Cortexi: Claims, Ingredients, and Purchase Terms",
+    "reviewIntro": "Cortexi is marketed in the hearing-wellness category. Be especially careful with claims about hearing changes, tinnitus, or medical conditions: marketing statements do not establish that a supplement can diagnose, treat, cure, or prevent a condition.",
+    "checklist": [
+      "Read the complete formula, serving directions, warnings, and manufacturer information.",
+      "Look for credible clinical evidence for the exact product and claim.",
+      "Understand the total order cost and refund/recurring-payment conditions before checkout.",
+      "New or changing hearing symptoms should be assessed by an appropriate healthcare professional."
+    ],
+    "warning": "Do not delay professional evaluation of hearing symptoms because of supplement advertising.",
+    "affiliateUrl": "",
+    "ctaText": "Visit Official Website"
+  }
+];
+const STORAGE_KEY = 'blw-product-manager-v1';
+let products = DEFAULT_PRODUCTS.map(p => ({...p, checklist:Array.isArray(p.checklist)?[...p.checklist]:[]}));
+let editingId = null;
+const $ = id => document.getElementById(id);
+function slugify(value){return String(value||'product').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'product'}
+function validWebUrl(value){if(!value)return true;try{return ['http:','https:'].includes(new URL(value).protocol)}catch(_){return false}}
+function saveLocal(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(products))}catch(_){}}
+function loadLocal(){try{const raw=localStorage.getItem(STORAGE_KEY);if(raw){const parsed=JSON.parse(raw);if(Array.isArray(parsed))products=parsed}}catch(_){} }
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderList(){
+  $('count').textContent=products.length+' product'+(products.length===1?'':'s');
+  if(!products.length){$('productList').innerHTML='<div class="empty">No products yet. Add one using the form.</div>';return}
+  $('productList').innerHTML=products.map((p,i)=>`<article class="item"><img src="${esc(p.imageUrl||'')}" alt="" onerror="this.style.visibility='hidden'"><div><h3>${esc(p.name||'Untitled Product')}</h3><p>${esc(p.category||'Wellness')} · ${esc(p.id||'')}</p><div class="item-actions"><button class="btn secondary" type="button" data-edit="${i}">Edit</button><button class="btn danger" type="button" data-delete="${i}">Delete</button></div></div></article>`).join('');
+  $('productList').querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click',()=>editProduct(Number(b.dataset.edit))));
+  $('productList').querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',()=>deleteProduct(Number(b.dataset.delete))));
+}
+function formProduct(){
+  const name=$('name').value.trim();
+  const shortDescription=$('shortDescription').value.trim();
+  let id=slugify(name);
+  let existing=null;
+  if(editingId!==null){
+    existing=products.find(p=>p.id===editingId)||null;
+    if(existing)id=existing.id;
+  } else {
+    let base=id,n=2;
+    while(products.some(p=>p.id===id))id=base+'-'+n++;
+  }
+  return {
+    id,
+    name,
+    category:$('category').value.trim(),
+    shortDescription,
+    imageUrl:$('imageUrl').value.trim(),
+    imageAlt:(existing&&existing.imageAlt)||name+' product image',
+    reviewTitle:(existing&&existing.reviewTitle)||name+': What to Check Before Buying',
+    reviewIntro:(existing&&existing.reviewIntro)||shortDescription,
+    checklist:(existing&&Array.isArray(existing.checklist)&&existing.checklist.length)
+      ? [...existing.checklist]
+      : [
+          'Review the current product label, ingredients, and directions.',
+          'Check price, shipping, refund policy, and recurring-order terms.',
+          'Look for reliable evidence for specific product claims.',
+          'Consult a qualified healthcare professional about personal suitability.'
+        ],
+    warning:$('warning').value.trim()||'This guide is for educational purposes only and is not medical advice.',
+    affiliateUrl:$('affiliateUrl').value.trim(),
+    ctaText:$('ctaText').value.trim()||'Visit Official Website'
+  };
+}
+function clearForm(){editingId=null;$('productForm').reset();$('ctaText').value='Visit Official Website';$('formTitle').textContent='Add a new product';$('saveBtn').textContent='＋ Add Product';$('cancelEditBtn').classList.add('hidden');$('status').textContent=''}
+function editProduct(index){const p=products[index];if(!p)return;editingId=p.id;$('name').value=p.name||'';$('category').value=p.category||'';$('shortDescription').value=p.shortDescription||'';$('imageUrl').value=p.imageUrl||'';$('warning').value=p.warning||'';$('affiliateUrl').value=p.affiliateUrl||'';$('ctaText').value=p.ctaText||'Visit Official Website';$('formTitle').textContent='Edit: '+p.name;$('saveBtn').textContent='Save Changes';$('cancelEditBtn').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'})}
+async function saveCatalogToServer(successMessage){
+  saveLocal();
+  $('status').textContent='Saving products.json...';
+  try{
+    const response=await fetch('/api/products',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(products)});
+    const result=await response.json().catch(()=>({}));
+    if(!response.ok||!result.ok)throw new Error(result.error||('HTTP '+response.status));
+    $('status').textContent=successMessage||'Saved automatically to products.json. Refresh the homepage to see the changes.';
+    return true;
+  }catch(error){
+    $('status').textContent='Automatic save failed. Check that you started server.py with "python server.py" (not "python -m http.server 8000"). Your draft is still kept in this browser. Details: '+error.message;
+    return false;
+  }
+}
+async function deleteProduct(index){
+  const p=products[index];if(!p)return;
+  if(!confirm('Delete '+p.name+' from this catalog?'))return;
+  products.splice(index,1);renderList();
+  if(editingId===p.id)clearForm();
+  await saveCatalogToServer('Product deleted and saved to products.json.');
+}
+$('productForm').addEventListener('submit',async event=>{
+  event.preventDefault();
+  const p=formProduct();
+  if(!p.name||!p.category||!p.shortDescription||!p.imageUrl){$('status').textContent='Please complete all required fields.';return}
+  if(!validWebUrl(p.imageUrl)||!validWebUrl(p.affiliateUrl)){$('status').textContent='Image and affiliate links must be valid http:// or https:// URLs.';return}
+  if(editingId!==null){const i=products.findIndex(x=>x.id===editingId);if(i>=0)products[i]=p}else products.push(p);
+  renderList();clearForm();
+  await saveCatalogToServer('Product saved automatically to products.json. Refresh the homepage to see it.');
+});
+$('resetBtn').addEventListener('click',clearForm);$('cancelEditBtn').addEventListener('click',clearForm);
+$('downloadBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(products,null,2)+'\n'],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='products.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);$('status').textContent='Backup copy of products.json downloaded.'});
+$('importFile').addEventListener('change',async e=>{
+  const file=e.target.files?.[0];if(!file)return;
+  try{
+    const list=JSON.parse(await file.text());if(!Array.isArray(list))throw new Error('Catalog must be a JSON array');
+    products=list;renderList();clearForm();
+    await saveCatalogToServer('Imported catalog saved automatically to products.json.');
+  }catch(err){$('status').textContent='Import failed: '+err.message}
+  e.target.value='';
+});
+$('importCurrentBtn').addEventListener('click',async()=>{
+  try{
+    const r=await fetch('products.json?v='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw new Error('products.json not found. Select the file using Import above.');
+    const list=await r.json();if(!Array.isArray(list))throw new Error('products.json is not a list.');
+    products=list;saveLocal();renderList();clearForm();$('status').textContent='Loaded current products.json.';
+  }catch(err){$('status').textContent='Could not read products.json: '+err.message}
+});
+(async function initializeCatalog(){
+  try{
+    const response=await fetch('products.json?v='+Date.now(),{cache:'no-store'});
+    if(!response.ok)throw new Error('HTTP '+response.status);
+    const list=await response.json();
+    if(!Array.isArray(list))throw new Error('products.json must contain a JSON array');
+    products=list;saveLocal();renderList();
+    $('status').textContent='Loaded saved catalog from products.json.';
+  }catch(error){
+    loadLocal();renderList();
+    $('status').textContent='Could not load products.json. Check that server.py is running in the website folder.';
+  }
+})();
+</script>
+</body></html>
