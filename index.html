@@ -28,6 +28,7 @@
     @media(max-width:460px){.brand{font-size:1.05rem}.brand-mark{width:36px;height:36px}.product-grid{grid-template-columns:1fr}.product-image{height:230px}.product-toolbar{align-items:stretch}.results-count{width:100%}.footer-grid{grid-template-columns:1fr}.hero-actions .btn{width:100%}.hero-note{align-items:flex-start}.stats-grid{grid-template-columns:1fr 1fr}.contact-copy,.contact-form{padding:20px}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <header class="site-header">
@@ -302,17 +303,30 @@
       runSearch(input.value);
     }));
 
-    // Load the data file on a hosted website; retain embedded defaults for local file:// previews.
+    // Public catalog: only published rows are requested. Never put a Supabase secret/service_role key here.
+    const BLW_SUPABASE_URL = 'https://zwhmvedgqiddutpadmwr.supabase.co';
+    const BLW_SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_C0uYgOAfWlJOP_ejwbu2_w_jdw181SR';
     async function loadProductCatalog() {
       try {
-        const response = await fetch(`products.json?v=${Date.now()}`, { cache:'no-store' });
-        if (!response.ok) throw new Error('Could not load products.json');
-        const data = await response.json();
-        if (!Array.isArray(data)) throw new Error('products.json must contain a JSON array');
-        renderProducts(data);
+        if (!window.supabase?.createClient) throw new Error('Supabase library did not load');
+        const client = window.supabase.createClient(BLW_SUPABASE_URL, BLW_SUPABASE_PUBLISHABLE_KEY);
+        const { data, error } = await client.from('products')
+          .select('slug,name,category,short_description,image_url,image_alt,review_title,review_intro,checklist,warning,official_url,affiliate_url,cta_text,is_published')
+          .eq('is_published', true).order('created_at', { ascending: false });
+        if (error) throw error;
+        const mapped = (data || []).map(row => ({
+          id: row.slug, name: row.name, category: row.category,
+          shortDescription: row.short_description, imageUrl: row.image_url, imageAlt: row.image_alt,
+          reviewTitle: row.review_title, reviewIntro: row.review_intro,
+          checklist: Array.isArray(row.checklist) ? row.checklist : [], warning: row.warning,
+          affiliateUrl: row.affiliate_url || row.official_url || '', ctaText: row.cta_text || 'Visit Official Website'
+        }));
+        // If the database is empty, display an empty catalog rather than silently showing stale defaults.
+        renderProducts(mapped);
       } catch (error) {
+        // Keep the existing site usable during setup or if the connection is unavailable.
         renderProducts(DEFAULT_PRODUCTS);
-        console.info('Using embedded product catalog. To load a separate products.json locally, serve the folder over HTTP.', error.message);
+        console.info('Supabase catalog unavailable; showing embedded fallback catalog.', error.message || error);
       }
     }
     renderProducts(DEFAULT_PRODUCTS);
