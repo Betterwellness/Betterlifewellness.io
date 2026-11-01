@@ -556,8 +556,10 @@
       if (noResults) noResults.style.display = count ? 'none' : 'block';
       document.getElementById('resultsCount').textContent = `Showing ${count} product ${count === 1 ? 'guide' : 'guides'}`;
     }
-    [document.getElementById('productSearch'), document.getElementById('mobileSearch')].forEach(input => input.addEventListener('input', () => {
-      [document.getElementById('productSearch'), document.getElementById('mobileSearch')].forEach(other => { if (other !== input) other.value = input.value; });
+    // Search boxes are optional in the image-based header layout.
+    // A missing search input must not stop the product catalog from loading.
+    [document.getElementById('productSearch'), document.getElementById('mobileSearch')].filter(Boolean).forEach(input => input.addEventListener('input', () => {
+      [document.getElementById('productSearch'), document.getElementById('mobileSearch')].filter(Boolean).forEach(other => { if (other !== input) other.value = input.value; });
       runSearch(input.value);
     }));
 
