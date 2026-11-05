@@ -1,0 +1,60 @@
+BETTERLIFE WELLNESS — GITHUB WORKER PACKAGE
+==========================================
+
+WHAT THIS PACKAGE DOES
+- Keeps the existing website files and their current root URLs.
+- Adds a Cloudflare Worker script that serves review pages dynamically from published Supabase rows.
+- For the 24 existing review pages, it keeps the complete existing editorial HTML and only synchronizes catalog-controlled fields (SEO title/description/canonical, heading, intro, image, safety note, and main product link).
+- For a newly added product with no existing editorial HTML page, it creates a starter review guide from the fields already stored in Supabase.
+- Generates /sitemap.xml from the currently published products.
+- Existing Supabase Admin Login and RLS policies are not changed.
+- Uses only the existing Supabase publishable key. Never add a service_role or secret key.
+
+BEFORE UPLOADING
+1. Extract this ZIP.
+2. Open the extracted folder.
+3. Upload the contents to the ROOT of the existing GitHub repository:
+   Betterwellness / Betterlifewellness.io
+4. Keep the folders and paths exactly as shown:
+   - src/index.js
+   - wrangler.jsonc
+   - .assetsignore
+   - all root HTML, JSON, XML, and TXT website files
+5. GitHub will ask you to replace files with matching names such as index.html,
+   manage-products.html, products.json, and sitemap.xml. Those are the current
+   website files from the latest Cloudflare deployment package; allow those
+   replacements.
+6. Do NOT delete the existing logo image or Google verification HTML file from
+   your repository. They are not included in this ZIP and should remain there.
+7. Do NOT click Cloudflare Save/Deploy yet. First confirm the GitHub commit has
+   completed and then we will review the Cloudflare build settings.
+
+IMPORTANT FILES
+- src/index.js: dynamic SEO page and sitemap Worker.
+- wrangler.jsonc: Cloudflare Worker + static assets configuration.
+- .assetsignore: prevents Worker source/configuration from being published as
+  public website files.
+- The assets directory is the repository root so existing file paths continue
+  to work. The Worker intercepts only /sitemap.xml and /*-review.html.
+
+SECURITY
+- This Worker reads only products where is_published = true.
+- It uses the existing Supabase publishable key, which is designed for public
+  application code and remains restricted by the existing grants and RLS.
+- It does not use a Supabase secret/service_role key.
+- It does not create, update, or delete database records.
+- Do not change Supabase RLS, grants, admin_users, or authentication settings.
+
+BEHAVIOR
+- Add a published product: its /<slug>-review.html route and sitemap URL become
+  available from Supabase without manually creating an HTML file.
+- Edit a published product: the page content and sitemap lastmod update from
+  the database on the next request.
+- Unpublish or delete a product: its dynamic review route returns 404 and it
+  disappears from the generated sitemap.
+- If Supabase is temporarily unavailable, the Worker falls back to the existing
+  static review page or static sitemap so the current site can remain available.
+
+NOTE
+This ZIP is prepared for review and GitHub upload. Do not deploy until we have
+confirmed the repository contents and Cloudflare connection settings.

@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="google-site-verification" content="vZskPlCfeGUoJI0-OX_N1CxbqeotFTTrrBX8w6qJZc4" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore wellness product reviews, ingredient guides, and educational resources for weight management, gut health, joint wellness, and hearing support. Make informed choices with BetterLife Wellness.">
   <meta name="theme-color" content="#10241d">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <title>BetterLife Wellness | Health &amp; Wellness Product Reviews</title>
-  <link rel="canonical" href="https://betterwellness.github.io/Betterlifewellness.io/">
+  <link rel="canonical" href="https://betterlife.wellness4u.workers.dev/">
 
   <!-- Social sharing preview -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BetterLife Wellness">
-  <meta property="og:url" content="https://betterwellness.github.io/Betterlifewellness.io/">
+  <meta property="og:url" content="https://betterlife.wellness4u.workers.dev/">
   <meta property="og:title" content="BetterLife Wellness | Health &amp; Wellness Product Reviews">
   <meta property="og:description" content="Explore wellness product reviews, ingredient guides, and practical health information to help you make informed choices.">
   <meta property="og:image" content="https://betterwellness.github.io/Betterlifewellness.io/betterlife-wellness-logo.jpeg">
@@ -31,9 +32,9 @@
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://betterwellness.github.io/Betterlifewellness.io/#organization",
+        "@id": "https://betterlife.wellness4u.workers.dev/#organization",
         "name": "BetterLife Wellness",
-        "url": "https://betterwellness.github.io/Betterlifewellness.io/",
+        "url": "https://betterlife.wellness4u.workers.dev/",
         "email": "betterlifewellnessvn@gmail.com",
         "telephone": "+91 9928167949",
         "description": "An educational wellness website sharing product reviews, ingredient guides, and information to help readers make informed decisions.",
@@ -45,12 +46,12 @@
       },
       {
         "@type": "WebSite",
-        "@id": "https://betterwellness.github.io/Betterlifewellness.io/#website",
-        "url": "https://betterwellness.github.io/Betterlifewellness.io/",
+        "@id": "https://betterlife.wellness4u.workers.dev/#website",
+        "url": "https://betterlife.wellness4u.workers.dev/",
         "name": "BetterLife Wellness",
         "description": "Wellness product reviews, ingredient guides, and educational resources.",
         "publisher": {
-          "@id": "https://betterwellness.github.io/Betterlifewellness.io/#organization"
+          "@id": "https://betterlife.wellness4u.workers.dev/#organization"
         },
         "inLanguage": "en"
       }
@@ -474,11 +475,11 @@
     function safeAffiliateUrl(value) { return safeHttpUrl(value); }
 
     function renderProductCard(product) {
-      const anchor = `review-${product.id}`;
+      const reviewUrl = `/${encodeURIComponent(product.id)}-review.html`;
       return `<article class="product-card" data-product-id="${escapeHtml(product.id)}" data-search="${escapeHtml([product.name,product.category,product.shortDescription].join(' ').toLowerCase())}">
         <div class="product-image-wrap"><img class="product-image" src="${escapeHtml(product.imageUrl)}" alt="${escapeHtml(product.imageAlt)}" loading="lazy"><span class="product-tag">${escapeHtml(product.category)}</span></div>
-        <a class="review-link" href="#${escapeHtml(anchor)}">Read Full Review <span aria-hidden="true">→</span></a>
-        <div class="product-copy"><h3>${escapeHtml(product.name)}</h3><p>${escapeHtml(product.shortDescription)}</p><a class="text-link" href="#${escapeHtml(anchor)}">Explore guide ↗</a></div>
+        <a class="review-link" href="${reviewUrl}">Read Full Review <span aria-hidden="true">→</span></a>
+        <div class="product-copy"><h3>${escapeHtml(product.name)}</h3><p>${escapeHtml(product.shortDescription)}</p><a class="text-link" href="${reviewUrl}">Explore guide ↗</a></div>
       </article>`;
     }
     function renderReviewCard(product, index) {

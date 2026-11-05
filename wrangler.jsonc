@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developers.cloudflare.com/workers/wrangler/config-schema.json",
+  "name": "betterlife",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-05",
+  "workers_dev": true,
+  "vars": {
+    "SITE_URL": "https://betterlife.wellness4u.workers.dev",
+    "SUPABASE_URL": "https://zwhmvedgqiddutpadmwr.supabase.co",
+    "SUPABASE_PUBLISHABLE_KEY": "sb_publishable_C0uYgOAfWlJOP_ejwbu2_w_jdw181SR"
+  },
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/sitemap.xml",
+      "/*-review.html"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://betterlife.wellness4u.workers.dev/sitemap.xml
