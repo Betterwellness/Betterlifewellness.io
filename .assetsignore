@@ -1,0 +1,8 @@
+src/
+wrangler.jsonc
+UPLOAD-TO-GITHUB.txt
+README*
+package.json
+node_modules/
+.git/
+.github/
