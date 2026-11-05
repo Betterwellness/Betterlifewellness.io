@@ -58,3 +58,4 @@ BEHAVIOR
 NOTE
 This ZIP is prepared for review and GitHub upload. Do not deploy until we have
 confirmed the repository contents and Cloudflare connection settings.
+Trigger first Cloudflare Git deployment.
